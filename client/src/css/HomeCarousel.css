@@ -1,0 +1,30 @@
+.home-carousel-img {
+	width: 100vw;
+	height: 100vh;
+  object-fit: cover;
+	filter: brightness(50%);
+}
+
+.carousel-caption {
+	position: absolute;
+	top: 20%;
+	margin: auto;
+}
+
+.carousel-caption h1 {
+	font-size: 5rem;
+}
+
+.carousel-caption p {
+	margin-top: 2rem;
+	font-size: xx-large;
+}
+
+@media screen and (max-width: 768px) {
+	.carousel-caption {
+		top: 15%;
+	}
+	.carousel-caption h1 {
+		font-size: 3rem;
+	}
+}

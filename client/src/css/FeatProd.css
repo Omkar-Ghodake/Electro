@@ -1,0 +1,23 @@
+.feat-prod-img {
+	cursor: pointer;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.feat-prod-img:hover {
+	filter: brightness(70%);
+}
+
+.img-btns {
+	position: absolute;
+	top: 18%;
+	right: -80%;
+}
+
+.card-cart-btn, .card-like-btn {
+	width: 40px;
+	height: 40px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
