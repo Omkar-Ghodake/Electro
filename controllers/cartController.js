@@ -2,7 +2,7 @@ const Product = require('../models/Product')
 const Cart = require('../models/Cart')
 
 // add products to cart
-module.exports.addToCart = async (req, res) => {
+exports.addToCart = async (req, res) => {
 	try {
 		const { productId } = req.params
 
@@ -37,7 +37,7 @@ module.exports.addToCart = async (req, res) => {
 }
 
 // remove products from cart
-module.exports.removeFromCart = async (req, res) => {
+exports.removeFromCart = async (req, res) => {
 	try {
 		const { productId } = req.params
 
@@ -63,7 +63,7 @@ module.exports.removeFromCart = async (req, res) => {
 }
 
 // increase product quantity in cart
-module.exports.incProducts = async (req, res) => {
+exports.incProducts = async (req, res) => {
 	try {
 		const { productId } = req.params
 
@@ -86,7 +86,7 @@ module.exports.incProducts = async (req, res) => {
 }
 
 // get cart for user
-module.exports.getCartForUser = async (req, res) => {
+exports.getCartForUser = async (req, res) => {
 	try {
 		const cart = await Cart.findOne({ userId: req.user.id })
 		res.json({ success: true, cart })
@@ -96,7 +96,7 @@ module.exports.getCartForUser = async (req, res) => {
 }
 
 // get all carts --admin
-module.exports.getAllCarts = async (req, res) => {
+exports.getAllCarts = async (req, res) => {
 	try {
 		const cart = await Cart.find()
 		res.json({ success: true, cart })

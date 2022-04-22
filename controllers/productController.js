@@ -2,7 +2,7 @@ const Product = require('../models/Product')
 const { validationResult } = require('express-validator')
 
 // create product --admin
-module.exports.createProduct = async (req, res) => {
+exports.createProduct = async (req, res) => {
 	const validationErrors = validationResult(req)
 	if (!validationErrors.isEmpty()) {
 		return res.status(400).json({ success: false, validationErrors })
@@ -17,7 +17,7 @@ module.exports.createProduct = async (req, res) => {
 }
 
 // update product --admin
-module.exports.updateProduct = async (req, res) => {
+exports.updateProduct = async (req, res) => {
 	try {
 		const { id } = req.params
 
@@ -38,7 +38,7 @@ module.exports.updateProduct = async (req, res) => {
 }
 
 // delete product --admin
-module.exports.deleteProduct = async (req, res) => {
+exports.deleteProduct = async (req, res) => {
 	try {
 		const { id } = req.params
 
@@ -55,7 +55,7 @@ module.exports.deleteProduct = async (req, res) => {
 }
 
 // get all products
-module.exports.getAllProducts = async (req, res) => {
+exports.getAllProducts = async (req, res) => {
 	try {
 		const qCategory = req.query.category
 		const qLatest = req.query.latest

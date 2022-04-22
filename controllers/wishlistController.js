@@ -3,7 +3,7 @@ const User = require('../models/User')
 const { validationResult } = require('express-validator')
 
 // create wishlist
-module.exports.createWishlist = async (req, res) => {
+exports.createWishlist = async (req, res) => {
 	try {
 		const userId = req.user.id
 		const { name } = req.body
@@ -21,7 +21,7 @@ module.exports.createWishlist = async (req, res) => {
 }
 
 // add product to wishlist
-module.exports.addProductToWishlist = async (req, res) => {
+exports.addProductToWishlist = async (req, res) => {
 	try {
 		const { wishlistId, productId } = req.body
 
@@ -48,7 +48,7 @@ module.exports.addProductToWishlist = async (req, res) => {
 }
 
 // delete a product from wishlist
-module.exports.deleteProductFromWishlist = async (req, res) => {
+exports.deleteProductFromWishlist = async (req, res) => {
 	const validationErrors = validationResult(req)
 	if (!validationErrors.isEmpty()) {
 		return res.status(400).json({ success: false, validationErrors })
@@ -80,7 +80,7 @@ module.exports.deleteProductFromWishlist = async (req, res) => {
 }
 
 // get wishlists for a specific user
-module.exports.getUserWishlist = async (req, res) => {
+exports.getUserWishlist = async (req, res) => {
 	try {
 		const userId = req.user.id
 		const wishlists = await Wishlist.find({ userId })
@@ -91,7 +91,7 @@ module.exports.getUserWishlist = async (req, res) => {
 }
 
 // get wishlist of any user --admin
-module.exports.getAnyUserWishlist = async (req, res) => {
+exports.getAnyUserWishlist = async (req, res) => {
 	try {
 		const { userId } = req.params
 
@@ -110,7 +110,7 @@ module.exports.getAnyUserWishlist = async (req, res) => {
 }
 
 // update wishlist
-module.exports.updateWishlist = async (req, res) => {
+exports.updateWishlist = async (req, res) => {
 	try {
 		const wishlist = await Wishlist.findById(req.params.id)
 		if (!wishlist) {
@@ -131,7 +131,7 @@ module.exports.updateWishlist = async (req, res) => {
 }
 
 // delete wishlist
-module.exports.deleteWishlist = async (req, res) => {
+exports.deleteWishlist = async (req, res) => {
 	try {
 		const wishlist = await Wishlist.findById(req.params.id)
 		if (!wishlist) {

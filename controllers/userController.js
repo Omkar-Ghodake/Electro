@@ -2,7 +2,7 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
 // update user
-module.exports.updateUser = async (req, res) => {
+exports.updateUser = async (req, res) => {
 	try {
 		const { id } = req.params
 		const user = await User.findById(id)
@@ -31,7 +31,7 @@ module.exports.updateUser = async (req, res) => {
 }
 
 // delete user
-module.exports.deleteUser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
 	try {
 		const { id } = req.params
 		const user = await User.findById(id)
@@ -53,7 +53,7 @@ module.exports.deleteUser = async (req, res) => {
 }
 
 // get user data
-module.exports.getUserData = async (req, res) => {
+exports.getUserData = async (req, res) => {
 	try {
 		const user = await User.findById(req.user.id).select('-password')
 		if (!user) {
@@ -66,7 +66,7 @@ module.exports.getUserData = async (req, res) => {
 }
 
 // get all users data --admin
-module.exports.getAllUsers = async (req, res) => {
+exports.getAllUsers = async (req, res) => {
 	try {
 		const query = req.query.results
 		const sort = req.query.sort
@@ -80,7 +80,7 @@ module.exports.getAllUsers = async (req, res) => {
 }
 
 // get user stats --admin
-module.exports.getUserStats = async (req, res) => {
+exports.getUserStats = async (req, res) => {
 	try {
 		const date = new Date()
 		const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))

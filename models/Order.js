@@ -26,8 +26,22 @@ const OrderSchema = new Schema(
 			required: true
 		},
 		address: {
-			type: Object,
-			required: true,
+			street: {
+				type: String,
+				required: true
+			},
+			city: {
+				type: String,
+				required: true
+			},
+			state: {
+				type: String,
+				required: true
+			},
+			pinCode: {
+				type: Number,
+				required: true
+			},
 		},
 		status: {
 			type: String,

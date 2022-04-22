@@ -19,6 +19,9 @@ router.put('/removeFromCart/:productId', verifyLoginSession, removeFromCart)
 // increase product quantity in cart
 router.put('/incProducts/:productId', verifyLoginSession, incProducts)
 
+// decrease product quantity in cart
+// router.put('/decProducts/:productId', verifyLoginSession, decProducts)
+
 // get a cart for user
 router.get('/', verifyLoginSession, getCartForUser)
 

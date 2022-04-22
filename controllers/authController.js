@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 // register a new user
-module.exports.registerUser = async (req, res) => {
+exports.registerUser = async (req, res) => {
 	const validationErrors = validationResult(req)
 	if (!validationErrors.isEmpty()) {
 		return res.status(400).json({ success: false, validationErrors })
@@ -29,7 +29,7 @@ module.exports.registerUser = async (req, res) => {
 }
 
 // user login
-module.exports.userLogin = async (req, res) => {
+exports.userLogin = async (req, res) => {
 	const validationErrors = validationResult(req)
 	if (!validationErrors.isEmpty()) {
 		return res.status(400).json({ success: false, validationErrors })

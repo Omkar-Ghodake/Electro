@@ -2,7 +2,7 @@ const Order = require('../models/Order')
 const { validationResult } = require('express-validator')
 
 // create a new order
-module.exports.createOrder = async (req, res) => {
+exports.createOrder = async (req, res) => {
 	const validationErrors = validationResult(req)
 	if (!validationErrors.isEmpty()) {
 		return res.status(400).json({ success: false, validationErrors })
@@ -23,6 +23,6 @@ module.exports.createOrder = async (req, res) => {
 }
 
 // add product to order
-module.exports.addProductToOrder = async (req, res) => {
+exports.addProductToOrder = async (req, res) => {
 
 }
