@@ -43,6 +43,7 @@ router.put('/deleteProduct/:wishlistId',
 	[
 		body('productId', 'Missing Product Id').exists()
 	],
-	deleteProductFromWishlist)
+	deleteProductFromWishlist
+)
 
 module.exports = router

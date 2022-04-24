@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator')
 const bcrypt = require('bcrypt')
 const User = require('../models/User')
 const Cart = require('../models/Cart')
-const jwt = require('jsonwebtoken')
+const generateToken = require('../utils/generateToken')
 require('dotenv').config()
 
 // register a new user
@@ -47,12 +47,21 @@ exports.userLogin = async (req, res) => {
 			return res.status(403).json({ success: false, error: 'Invalid Password' })
 		}
 
-		const payload = {
-			id: user.id,
-			isAdmin: user.isAdmin
-		}
-		const authToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' })
-		res.json({ success: true, authToken })
+		await generateToken(res, user, '1d')
+	} catch (error) {
+		res.status(500).json({ success: false, error })
+	}
+}
+
+// user logout
+exports.userLogout = async (req, res) => {
+	try {
+		res.cookie('authToken', null, {
+			expires: new Date(Date.now()),
+			httpOnly: true
+		})
+
+		res.json({ success: true, message: 'Logged Out' })
 	} catch (error) {
 		res.status(500).json({ success: false, error })
 	}

@@ -2,7 +2,8 @@ const router = require('express').Router()
 const { body } = require('express-validator')
 const {
 	registerUser,
-	userLogin
+	userLogin,
+	userLogout
 } = require('../controllers/authController')
 
 // register a user
@@ -23,5 +24,9 @@ router.post('/login',
 	],
 	userLogin
 )
+
+// user logout
+router.get('/logout', userLogout)
+
 
 module.exports = router

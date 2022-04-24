@@ -1,4 +1,5 @@
 const Product = require('../models/Product')
+const User = require('../models/User')
 const ApiFeatures = require('../utils/apiFeatures')
 const { validationResult } = require('express-validator')
 
@@ -55,43 +56,115 @@ exports.deleteProduct = async (req, res) => {
 	}
 }
 
+// get all products details --admin
+exports.getAllProductsDetails = async (req, res) => {
+	try {
+		const qCategory = req.query.category
+		const qLatest = req.query.latest
+		const qSort = req.query.sort
+
+		let products
+
+		if (qLatest) {
+			products = qSort
+				? await Product.find().sort({ _id: qSort }).limit(qLatest)
+				: await Product.find().sort({ _id: -1 }).limit(qLatest)
+		}
+		if (qCategory) {
+			products = qSort
+				? await Product.find({
+					categories: {
+						$in: [qCategory]
+					}
+				}).sort({ _id: qSort })
+				: await Product.find({
+					categories: {
+						$in: [qCategory]
+					}
+				})
+		}
+		if (!qCategory && !qLatest && !qCategory) {
+			products = qSort
+				? await Product.find().sort({ _id: qSort })
+				: await Product.find()
+		}
+
+		return res.json({ success: true, products })
+	} catch (error) {
+		res.status(500).json({ success: false, error })
+	}
+}
+
 // get all products
 exports.getAllProducts = async (req, res) => {
-	// try {
-	const qCategory = req.query.category
-	const qLatest = req.query.latest
-	const qSort = req.query.sort
+	try {
+		const resultsPerPage = 8
 
-	let products
+		const apiFeat = new ApiFeatures(Product.find(), req.query)
+			.search()
+			.filter()
+			.pagination(resultsPerPage)
+		const products = await apiFeat.query
 
-	const apiFeat = new ApiFeatures(Product.find(), req.query).search()
-	const qProducts = await apiFeat.query
-
-	if (qLatest) {
-		products = qSort
-			? await Product.find().sort({ _id: qSort }).limit(qLatest)
-			: await Product.find().sort({ _id: -1 }).limit(qLatest)
+		return res.json({ success: true, products })
+	} catch (error) {
+		res.status(500).json({ success: false, error })
 	}
-	if (qCategory) {
-		products = qSort
-			? await Product.find({
-				categories: {
-					$in: [qCategory]
-				}
-			}).sort({ _id: qSort })
-			: await Product.find({
-				categories: {
-					$in: [qCategory]
+}
+
+// add review
+exports.addReview = async (req, res) => {
+	const validationErrors = validationResult(req)
+	if (!validationErrors.isEmpty()) {
+		return res.status(400).json({ validationErrors })
+	}
+
+	try {
+		const { user, name, rating, comment, productId } = req.body
+
+		if (user !== req.user.id) {
+			return res.status(403).json({ success: false, error: 'Not Allowed' })
+		}
+
+		// const user = await User.findById(req.user.id)
+
+		// if (!user) {
+		// 	return res.status(404).json({ success: false, error: 'User not Found' })
+		// }
+
+		const review = {
+			user, name, rating, comment
+		}
+
+		const product = await Product.findById(productId)
+		if (!product) {
+			return res.status(404).json({ success: false, error: 'Product not Found' })
+		}
+
+		const isReviewed = product.reviews.find(
+			rev => rev.user.toString() === req.user.id.toString()
+		)
+
+		if (isReviewed) {
+			product.reviews.forEach(rev => {
+				if (rev.user.toString() === req.user.id.toString()) {
+					rev.rating = rating,
+						rev.comment = comment
 				}
 			})
+		} else {
+			product.reviews.push(review)
+			product.numOfReviews = product.reviews.length
+		}
+
+		let avg = 0
+		product.reviews.forEach(rev => { avg += rev.rating })
+		product.ratings = avg / product.reviews.length
+
+		await product.save()
+
+		res.json({ success: true, rating: product.ratings, review: product.reviews })
+	} catch (error) {
+		res.status(500).json({ success: false, error })
 	}
-	if (!qCategory && !qLatest && !qCategory) {
-		products = qSort
-			? await Product.find().sort({ _id: qSort })
-			: await Product.find()
-	}
-	return res.json({ success: true, products, qProducts })
-	// } catch (error) {
-	// 	res.status(500).json({ success: false, error })
-	// }
 }

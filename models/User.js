@@ -8,6 +8,14 @@ const UserSchema = new Schema(
 			required: true,
 			unique: true
 		},
+		avatar: {
+			public_id: {
+				type: String
+			},
+			url: {
+				type: String
+			}
+		},
 		email: {
 			type: String,
 			required: true,

@@ -1,5 +1,8 @@
 const express = require('express')
 const app = express()
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 require('dotenv').config()
 const connectToMongo = require('./db')
 
@@ -8,6 +11,9 @@ connectToMongo()
 
 // middlewares
 app.use(express.json())
+app.use(cookieParser())
+app.use(cors())
+app.use(bodyParser.json())
 
 // api endpoints
 app.use('/user', require('./routes/user'))

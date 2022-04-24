@@ -32,14 +32,15 @@ const ProductSchema = new Schema(
 			type: Number,
 			required: true
 		},
-		rating: {
-			type: Number,
-			default: 0
-		},
 		stock: {
 			type: Number,
 			required: true,
-			default: 1
+			default: 1,
+			min: 1
+		},
+		ratings: {
+			type: Number,
+			default: 0
 		},
 		numOfReviews: {
 			type: Number,
@@ -47,6 +48,11 @@ const ProductSchema = new Schema(
 		},
 		reviews: [
 			{
+				user: {
+					type: Schema.Types.ObjectId,
+					ref: 'User',
+					required: true
+				},
 				name: {
 					type: String,
 					required: true
