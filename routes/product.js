@@ -1,11 +1,10 @@
-const express = require('express')
+const router = require('express').Router()
 const {
 	createProduct,
 	updateProduct,
 	deleteProduct,
 	getAllProducts
 } = require('../controllers/productController')
-const router = express()
 const verifyAdmin = require('../middlewares/verifyAdminLogin')
 const { body } = require('express-validator')
 
@@ -13,11 +12,13 @@ const { body } = require('express-validator')
 router.post('/createProduct',
 	verifyAdmin,
 	[
-		body('title', 'Title should contain at least 6 characters').isLength({ min: 6 }),
-		body('desc', 'Description should contain at least 10 characters').isLength({ min: 10 }),
-		body('img', 'Should be url').isURL(),
+		body('title').exists(),
+		body('desc').exists(),
+		body('images').isArray(),
 		body('categories', 'Category cannot be empty').exists(),
 		body('price', 'Price Should be a number').isNumeric(),
+		body('rating').isNumeric(),
+		body('stock').isNumeric(),
 	],
 	createProduct
 )

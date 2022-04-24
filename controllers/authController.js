@@ -22,7 +22,7 @@ exports.registerUser = async (req, res) => {
 
 		// create a cart for user
 		const cart = await Cart.create({ userId: newUser.id })
-		res.status(201).json({ success: true, newUser: newUser })
+		res.status(201).json({ success: true, newUser, cart })
 	} catch (error) {
 		res.status(500).json({ success: false, error })
 	}

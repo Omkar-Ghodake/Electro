@@ -1,4 +1,4 @@
-const express = require('express')
+const router = require('express').Router()
 const {
 	createWishlist,
 	addProductToWishlist,
@@ -8,7 +8,6 @@ const {
 	deleteWishlist,
 	deleteProductFromWishlist
 } = require('../controllers/wishlistController')
-const router = express.Router()
 const verifyLoginSession = require('../middlewares/verifyLoginSession')
 const { body } = require('express-validator')
 const verifyAdmin = require('../middlewares/verifyAdminLogin')

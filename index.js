@@ -16,6 +16,7 @@ app.use('/products', require('./routes/product'))
 app.use('/wishlist', require('./routes/wishlist'))
 app.use('/cart', require('./routes/cart'))
 app.use('/orders', require('./routes/order'))
+app.use('/payment', require('./routes/stripe'))
 
 app.listen(process.env.PORT, () => {
 	console.log(`Server running at https://localhost:${process.env.PORT}`)

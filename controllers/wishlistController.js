@@ -14,7 +14,7 @@ exports.createWishlist = async (req, res) => {
 		}
 
 		const newWishlist = await Wishlist.create({ name, userId })
-		res.json({ success: true, newWishlist })
+		res.status(201).json({ success: true, newWishlist })
 	} catch (error) {
 		res.status(500).json({ success: false, error })
 	}

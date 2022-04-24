@@ -1,4 +1,4 @@
-const express = require('express')
+const router = require('express').Router()
 const {
 	addToCart,
 	removeFromCart,
@@ -6,7 +6,6 @@ const {
 	getCartForUser,
 	getAllCarts
 } = require('../controllers/cartController')
-const router = express.Router()
 const verifyLoginSession = require('../middlewares/verifyLoginSession')
 verifyAdmin = require('../middlewares/verifyAdminLogin')
 

@@ -1,32 +1,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 const OrderSchema = new Schema(
 	{
-		userId: {
-			type: Schema.Types.ObjectId,
-			ref: 'User',
-			required: true
-		},
-		products: [
-			{
-				productId: {
-					type: Schema.Types.ObjectId,
-					ref: 'Product',
-					required: true
-				},
-				quantity: {
-					type: Number,
-					default: 1
-				}
-			}
-		],
-		amount: {
-			type: Number,
-			required: true
-		},
-		address: {
-			street: {
+		shippingInfo: {
+			address: {
 				type: String,
 				required: true
 			},
@@ -42,11 +21,76 @@ const OrderSchema = new Schema(
 				type: Number,
 				required: true
 			},
+			phone: {
+				type: Number,
+				required: true
+			}
 		},
-		status: {
+		orderItems: [
+			{
+				name: {
+					type: String,
+					required: true
+				},
+				price: {
+					type: Number,
+					required: true
+				},
+				quantity: {
+					type: Number,
+					required: true
+				},
+				product: {
+					type: ObjectId,
+					ref: 'Product',
+					required: true
+				}
+			}
+		],
+		user: {
+			type: ObjectId,
+			ref: 'User',
+			required: true
+		},
+		paymentInfo: {
+			id: {
+				type: String,
+				required: true
+			},
+			status: {
+				type: String,
+				required: true
+			}
+		},
+		paidAt: {
+			type: Date,
+			required: true
+		},
+		itemsPrice: {
+			type: Number,
+			default: 0,
+			required: true
+		},
+		taxPrice: {
+			type: Number,
+			default: 0,
+			required: true
+		},
+		shippingPrice: {
+			type: Number,
+			default: 0,
+			required: true
+		},
+		totalPrice: {
+			type: Number,
+			default: 0,
+			required: true
+		},
+		orderStatus: {
 			type: String,
-			default: 'pending'
-		}
+			default: 'Processing'
+		},
+		deliveredAt: Date
 	},
 	{ timestamps: true }
 )

@@ -1,4 +1,5 @@
 const Product = require('../models/Product')
+const ApiFeatures = require('../utils/apiFeatures')
 const { validationResult } = require('express-validator')
 
 // create product --admin
@@ -10,7 +11,7 @@ exports.createProduct = async (req, res) => {
 
 	try {
 		const newProduct = await Product.create(req.body)
-		res.json({ success: true, newProduct })
+		res.status(201).json({ success: true, newProduct })
 	} catch (error) {
 		res.status(500).json({ success: false, error })
 	}
@@ -56,38 +57,41 @@ exports.deleteProduct = async (req, res) => {
 
 // get all products
 exports.getAllProducts = async (req, res) => {
-	try {
-		const qCategory = req.query.category
-		const qLatest = req.query.latest
-		const qSort = req.query.sort
+	// try {
+	const qCategory = req.query.category
+	const qLatest = req.query.latest
+	const qSort = req.query.sort
 
-		let products
+	let products
 
-		if (qLatest) {
-			products = qSort
-				? await Product.find().sort({ _id: qSort }).limit(qLatest)
-				: await Product.find().sort({ _id: -1 }).limit(qLatest)
-		}
-		if (qCategory) {
-			products = qSort
-				? await Product.find({
-					categories: {
-						$in: [qCategory]
-					}
-				}).sort({ _id: qSort })
-				: await Product.find({
-					categories: {
-						$in: [qCategory]
-					}
-				})
-		}
-		if (!qCategory && !qLatest && !qCategory) {
-			products = qSort
-				? await Product.find().sort({ _id: qSort })
-				: await Product.find()
-		}
-		return res.json({ success: true, products })
-	} catch (error) {
-		res.status(500).json({ success: false, error })
+	const apiFeat = new ApiFeatures(Product.find(), req.query).search()
+	const qProducts = await apiFeat.query
+
+	if (qLatest) {
+		products = qSort
+			? await Product.find().sort({ _id: qSort }).limit(qLatest)
+			: await Product.find().sort({ _id: -1 }).limit(qLatest)
 	}
+	if (qCategory) {
+		products = qSort
+			? await Product.find({
+				categories: {
+					$in: [qCategory]
+				}
+			}).sort({ _id: qSort })
+			: await Product.find({
+				categories: {
+					$in: [qCategory]
+				}
+			})
+	}
+	if (!qCategory && !qLatest && !qCategory) {
+		products = qSort
+			? await Product.find().sort({ _id: qSort })
+			: await Product.find()
+	}
+	return res.json({ success: true, products, qProducts })
+	// } catch (error) {
+	// 	res.status(500).json({ success: false, error })
+	// }
 }

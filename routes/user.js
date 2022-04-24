@@ -1,3 +1,4 @@
+const router = require('express').Router()
 const {
 	updateUser,
 	deleteUser,
@@ -7,8 +8,6 @@ const {
 } = require('../controllers/userController')
 const verifyLoginSession = require('../middlewares/verifyLoginSession')
 const verifyAdmin = require('../middlewares/verifyAdminLogin')
-
-const router = require('express').Router()
 
 // update a user
 router.put('/updateUser/:id', verifyLoginSession, updateUser)
