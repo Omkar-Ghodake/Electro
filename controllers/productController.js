@@ -1,5 +1,4 @@
 const Product = require('../models/Product')
-const User = require('../models/User')
 const ApiFeatures = require('../utils/apiFeatures')
 const { validationResult } = require('express-validator')
 
@@ -164,6 +163,60 @@ exports.addReview = async (req, res) => {
 		await product.save()
 
 		res.json({ success: true, rating: product.ratings, review: product.reviews })
+	} catch (error) {
+		res.status(500).json({ success: false, error })
+	}
+}
+
+// get all products reviews
+exports.getAllReviews = async (req, res) => {
+	const validationErrors = validationResult(req)
+	if (!validationErrors.isEmpty()) {
+		return res.status(400).json({ validationErrors })
+	}
+
+	try {
+		const product = await Product.findById(req.query.productId)
+		if (!product) {
+			return res.status(404).json({ success: false, error: 'Product Not Found' })
+		}
+
+		res.json({ success: true, reviews: product.reviews })
+	} catch (error) {
+		res.status(500).json({ success: false, error })
+	}
+}
+
+// delete a review
+exports.deleteReview = async (req, res) => {
+	const validationErrors = validationResult(req)
+	if (!validationErrors.isEmpty()) {
+		return res.status(400).json({ success: false, validationErrors })
+	}
+
+	try {
+		const product = await Product.findById(req.query.productId)
+		if (!product) {
+			return res.status(404).json({ success: false, error: 'Product Not Found' })
+		}
+
+		const reviews = product.reviews.filter(
+			(rev) => rev.id !== req.query.reviewId
+		)
+
+		let avg = 0
+		reviews.forEach(rev => { avg += rev.rating })
+		const ratings = avg / reviews.length
+
+		const numOfReviews = reviews.length
+
+		const updatedProduct = await Product.findByIdAndUpdate(req.query.productId, {
+			reviews,
+			ratings,
+			numOfReviews
+		}, { new: true, runValidators: true, useFindAndModify: false })
+
+		res.json({ success: true, ratings, numOfReviews })
 	} catch (error) {
 		res.status(500).json({ success: false, error })
 	}

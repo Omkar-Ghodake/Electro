@@ -5,11 +5,13 @@ const {
 	deleteProduct,
 	getAllProducts,
 	getAllProductsDetails,
-	addReview
+	addReview,
+	getAllReviews,
+	deleteReview
 } = require('../controllers/productController')
 const verifyAdmin = require('../middlewares/verifyAdminLogin')
 const verifyLoginSession = require('../middlewares/verifyLoginSession')
-const { body } = require('express-validator')
+const { body, query } = require('express-validator')
 
 // create a product --admin
 router.post('/createProduct',
@@ -49,6 +51,24 @@ router.put('/addReview',
 		body('productId', 'Product ID is Missing').exists()
 	],
 	addReview
+)
+
+// get all product reviews
+router.get('/reviews',
+	[
+		query('productId').exists()
+	],
+	getAllReviews
+)
+
+// delete a review
+router.delete('/deleteReview',
+	[
+		query('productId').exists(),
+		query('reviewId').exists()
+	],
+	verifyLoginSession,
+	deleteReview
 )
 
 module.exports = router
