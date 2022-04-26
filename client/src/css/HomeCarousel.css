@@ -1,7 +1,7 @@
 .home-carousel-img {
 	width: 100vw;
 	height: 100vh;
-  object-fit: cover;
+	object-fit: cover;
 	filter: brightness(50%);
 }
 
@@ -22,8 +22,9 @@
 
 @media screen and (max-width: 768px) {
 	.carousel-caption {
-		top: 15%;
+		top: 10%;
 	}
+
 	.carousel-caption h1 {
 		font-size: 3rem;
 	}

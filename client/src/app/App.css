@@ -1,38 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
-
-* {
-  font-family: 'Urbanist', sans-serif;
-  margin: 0;
-  padding: 0;
-  transition: all 0.27s ease-in-out !important;
+/* common classes */
+.trans-3 {
+	transition: 0.3s ease-in-out;
 }
 
-body {
-  background-color: #f5fafd;
+.trans-2 {
+	transition: 0.2s ease-in-out;
 }
 
-a {
-  text-decoration: none !important;
-  color: inherit !important;
+.box-shadow-main {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
 }
 
-/* common css classes */
-.bg-white {
-  background-color: white !important;
+.active-primary:active {
+	background-color: #0275d8 !important;
+	color: #fff;
 }
 
-.modal-close-btn {
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  font-size: x-large;
-}
-.modal-close-btn:hover {
-  background-color: rgb(234, 234, 234)
-}
-/* common css classes end */
+/* common classes end */

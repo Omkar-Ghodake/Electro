@@ -1,6 +1,6 @@
 .navbar {
-	backdrop-filter: blur(9px) saturate(180%);
-	-webkit-backdrop-filter: blur(9px) saturate(180%);
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
 	background-color: rgba(255, 255, 255, 0.75);
 }
 
@@ -47,6 +47,7 @@
 	width: 40px;
 	height: 40px;
 	border-bottom: 2px solid transparent;
+	font-size: x-large;
 }
 
 .navbar-search-btn:hover, .cart-btn:hover {
@@ -65,6 +66,7 @@
 	text-align: center;
 	border-color: transparent;
 }
+
 .nav-link {
 	border-bottom: 2px solid transparent;
 }
@@ -88,6 +90,19 @@
 .search-modal-results {
 	height: 62vh !important;
 	overflow: auto !important;
+}
+
+.modal-close-btn {
+	width: 30px;
+	height: 30px;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: larger;
+}
+
+.modal-close-btn:hover {
+	background-color: rgb(237, 235, 235);
 }
 
 @media screen and (min-width: 768px) {}

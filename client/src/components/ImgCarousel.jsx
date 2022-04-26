@@ -1,8 +1,8 @@
 import React from 'react'
-import Img1 from './images/home-carousel/img1.jpg'
-import Img2 from './images/home-carousel/img2.jpg'
-import Img3 from './images/home-carousel/img3.jpg'
-import Img4 from './images/home-carousel/img4.jpg'
+import Img1 from '../assets/images/home-carousel/img1.jpg'
+import Img2 from '../assets/images/home-carousel/img2.jpg'
+import Img3 from '../assets/images/home-carousel/img3.jpg'
+import Img4 from '../assets/images/home-carousel/img4.jpg'
 import '../css/HomeCarousel.css'
 
 const ImgCarousel = () => {

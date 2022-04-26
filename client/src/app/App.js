@@ -4,14 +4,15 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import Navbar from '../components/Navbar';
-import TopBar from '../components/TopBar';
+// components
+import Navbar from '../layouts/Navbar';
+import TopBar from '../layouts/TopBar';
 import Home from '../pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter >
         <TopBar />
         <Navbar />
 
