@@ -5,6 +5,7 @@ const {
 	deleteProduct,
 	getAllProducts,
 	getAllProductsDetails,
+	getSpecificProductDetails,
 	addReview,
 	getAllReviews,
 	deleteReview
@@ -34,11 +35,14 @@ router.post('/updateProduct/:id', verifyAdmin, updateProduct)
 // delete a product --admin
 router.delete('/deleteProduct/:id', verifyAdmin, deleteProduct)
 
+// get all products
+router.get('/', getAllProducts)
+
 // get all products details --admin
 router.get('/getAllProductDetails', verifyAdmin, getAllProductsDetails)
 
-// get all products
-router.get('/', getAllProducts)
+// get specific product details
+router.get('/:productId', getSpecificProductDetails)
 
 // add a review
 router.put('/addReview',

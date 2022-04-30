@@ -1,10 +1,17 @@
 import React from 'react'
-import ImgCarousel from '../components/ImgCarousel'
+import FeaturedProducts from '../components/featuredProducts/FeaturedProducts'
+import ImgCarousel from '../components/landingPage/ImgCarousel'
+// import MetaData from '../layouts/MetaData'
 
 const Home = () => {
+
 	return (
 		<>
-			<ImgCarousel />
+			<div className="Home">
+				{/* <MetaData title={'ELECTRO | Home'} /> */}
+				<ImgCarousel />
+				<FeaturedProducts />
+			</div>
 		</>
 	)
 }

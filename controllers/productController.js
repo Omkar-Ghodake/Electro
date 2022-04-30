@@ -98,6 +98,7 @@ exports.getAllProductsDetails = async (req, res) => {
 exports.getAllProducts = async (req, res) => {
 	try {
 		const resultsPerPage = 8
+		const productCount = await Product.countDocuments()
 
 		const apiFeat = new ApiFeatures(Product.find(), req.query)
 			.search()
@@ -105,9 +106,25 @@ exports.getAllProducts = async (req, res) => {
 			.pagination(resultsPerPage)
 		const products = await apiFeat.query
 
-		return res.json({ success: true, products })
+		return res.json({ success: true, products, productCount })
 	} catch (error) {
 		res.status(500).json({ success: false, error })
+	}
+}
+
+// get specific product details
+exports.getSpecificProductDetails = async (req, res) => {
+	try {
+		const { productId } = req.params
+
+		const productDetails = await Product.findById(productId)
+		if (!productDetails) {
+			return res.status(404).json({ success: false, error: 'Product Not Found' })
+		}
+
+		res.json({ success: false, productDetails })
+	} catch (error) {
+		return res.status(500).json({ success: false, error })
 	}
 }
 

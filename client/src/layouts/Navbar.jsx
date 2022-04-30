@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { RiShoppingCart2Line, RiSearch2Line } from 'react-icons/ri'
 import { RiMenu4Fill } from 'react-icons/ri'
 import Modal from './Modal'
@@ -9,6 +9,8 @@ import Modal from './Modal'
 
 
 const Navbar = () => {
+
+	const pathname = useLocation().pathname
 
 	return (
 		<>
@@ -20,7 +22,7 @@ const Navbar = () => {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-							<li className="nav-item py-4 current">
+							<li className={`nav-item py-4 ${pathname === '/' && 'current'}`}>
 								<Link className="nav-link large-nav-link" to="/">Home</Link>
 							</li>
 							<li className="nav-item py-4">
@@ -102,7 +104,11 @@ const Navbar = () => {
 				body={
 					<div>
 						<h5 className="modal-title text-center" id="navSearchModalLabel">Search for Products</h5>
-						<input className="navbar-search-input my-3 w-100 px-2 py-2 rounded-pill" type="text" placeholder="Search..." />
+						<div className="input-group rounded-pill px-2 py-1">
+							<input className="navbar-search-input" type="text" placeholder="Search..." aria-describedby="modal-search-btn" />
+							<button className="modal-search-btn rounded-circle trans-2 active-primary" id='modal-search-btn'><RiSearch2Line /></button>
+						</div>
+
 						<div className='search-modal-results'></div>
 					</div>
 				}

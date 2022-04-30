@@ -47,7 +47,7 @@ exports.userLogin = async (req, res) => {
 			return res.status(403).json({ success: false, error: 'Invalid Password' })
 		}
 
-		await generateToken(res, user, '1d')
+		await generateToken(res, user, '7d')
 	} catch (error) {
 		res.status(500).json({ success: false, error })
 	}

@@ -1,19 +1,4 @@
-/* common classes */
-.trans-3 {
-	transition: 0.3s ease-in-out;
+.top-part {
+	min-height: 100vh;
+	max-width: 100vw !important;
 }
-
-.trans-2 {
-	transition: 0.2s ease-in-out;
-}
-
-.box-shadow-main {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
-}
-
-.active-primary:active {
-	background-color: #0275d8 !important;
-	color: #fff;
-}
-
-/* common classes end */

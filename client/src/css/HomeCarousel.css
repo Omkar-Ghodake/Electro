@@ -1,31 +1,44 @@
-.home-carousel-img {
+.Home-Img-Carousel .home-carousel-img {
 	width: 100vw;
 	height: 100vh;
 	object-fit: cover;
 	filter: brightness(50%);
 }
 
-.carousel-caption {
+.Home-Img-Carousel .carousel-caption {
 	position: absolute;
 	top: 20%;
 	margin: auto;
 }
 
-.carousel-caption h1 {
+.Home-Img-Carousel .carousel-caption h1 {
 	font-size: 5rem;
 }
 
-.carousel-caption p {
+.Home-Img-Carousel .carousel-caption p {
 	margin-top: 2rem;
 	font-size: xx-large;
 }
 
+.Home-Img-Carousel .carrousel-scroll-btn {
+	border: 1px solid #fff;
+	outline: none;
+	background-color: transparent;
+	color: #fff;
+	padding: 8px 16px;
+}
+
+.Home-Img-Carousel .carrousel-scroll-btn:hover {
+	background-color: #fff;
+	color: #000;
+}
+
 @media screen and (max-width: 768px) {
-	.carousel-caption {
+	.Home-Img-Carousel .carousel-caption {
 		top: 10%;
 	}
 
-	.carousel-caption h1 {
+	.Home-Img-Carousel .carousel-caption h1 {
 		font-size: 3rem;
 	}
 }
