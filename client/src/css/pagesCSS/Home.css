@@ -1,3 +1,4 @@
+/* Landing Page Carousel */
 .Home-Img-Carousel .home-carousel-img {
 	width: 100vw;
 	height: 100vh;
@@ -41,4 +42,27 @@
 	.Home-Img-Carousel .carousel-caption h1 {
 		font-size: 3rem;
 	}
+}
+
+/* Featured Products */
+.FeaturedProducts .feat-prod-head {
+	width: fit-content;
+	border-bottom: 1.5px solid rgb(2, 107, 107);
+}
+
+.FeaturedProducts .feat-product-card .card-img-top {
+	overflow: hidden;
+}
+
+.FeaturedProducts .feat-product-card .card:hover img {
+	transform: scale(1.2);
+}
+
+.FeaturedProducts .feat-product-card .card:hover {
+	transform: translateY(-1vmax);
+	box-shadow: 0 10px 20px 5px rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+}
+
+.FeaturedProducts .product-title {
+	color: maroon;
 }

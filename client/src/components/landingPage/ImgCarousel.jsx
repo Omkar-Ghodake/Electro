@@ -3,7 +3,6 @@ import Img1 from '../../assets/images/home-carousel/img1.jpg'
 import Img2 from '../../assets/images/home-carousel/img2.jpg'
 import Img3 from '../../assets/images/home-carousel/img3.jpg'
 import Img4 from '../../assets/images/home-carousel/img4.jpg'
-import '../../css/HomeCarousel.css'
 
 const ImgCarousel = () => {
 
@@ -28,7 +27,7 @@ const ImgCarousel = () => {
 								<h1>POWER SUPPLY AND BATTERIES</h1>
 								<p>Get Batteries and Power Supplies with Great Accessories</p>
 								<a href='#FeaturedProducts'>
-									<button className='carrousel-scroll-btn'>See Products</button>
+									<button className='carrousel-scroll-btn trans-2'>See Products</button>
 								</a>
 							</div>
 						</div>
@@ -38,7 +37,7 @@ const ImgCarousel = () => {
 								<h1>CIRCUIT BOARDS</h1>
 								<p>All Kinds of Circuit Boards, Microcontrollers</p>
 								<a href='#FeaturedProducts'>
-									<button className='carrousel-scroll-btn'>See Products</button>
+									<button className='carrousel-scroll-btn trans-2'>See Products</button>
 								</a>
 							</div>
 						</div>
@@ -48,7 +47,7 @@ const ImgCarousel = () => {
 								<h1>SENSORS</h1>
 								<p>Get all Sorts of Sensors</p>
 								<a href='#FeaturedProducts'>
-									<button className='carrousel-scroll-btn'>See Products</button>
+									<button className='carrousel-scroll-btn trans-2'>See Products</button>
 								</a>
 							</div>
 						</div>

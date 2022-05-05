@@ -63,4 +63,15 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
+
+	.ProductDetails-sm-min {
+		display: none;
+	}
+}
+
+/* Above XS devices */
+@media screen and (min-width: 576px) {
+	.ProductDetails-sm-max {
+		display: none;
+	}
 }

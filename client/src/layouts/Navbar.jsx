@@ -1,5 +1,5 @@
-import React from 'react'
-import '../css/Navbar.css'
+import React, { useRef } from 'react'
+import '../css/layoutsCSS/Navbar.css'
 import { Link, useLocation } from 'react-router-dom'
 import { RiShoppingCart2Line, RiSearch2Line } from 'react-icons/ri'
 import { RiMenu4Fill } from 'react-icons/ri'
@@ -11,6 +11,11 @@ import Modal from './Modal'
 const Navbar = () => {
 
 	const pathname = useLocation().pathname
+	const closeRef = useRef(null)
+
+	const handleModalSearchClick = () => {
+		closeRef.current.click()
+	}
 
 	return (
 		<>
@@ -106,12 +111,13 @@ const Navbar = () => {
 						<h5 className="modal-title text-center" id="navSearchModalLabel">Search for Products</h5>
 						<div className="input-group rounded-pill px-2 py-1">
 							<input className="navbar-search-input" type="text" placeholder="Search..." aria-describedby="modal-search-btn" />
-							<button className="modal-search-btn rounded-circle trans-2 active-primary" id='modal-search-btn'><RiSearch2Line /></button>
+							<button className="modal-search-btn rounded-circle trans-2 active-primary" id='modal-search-btn' onClick={handleModalSearchClick}><RiSearch2Line /></button>
 						</div>
 
 						<div className='search-modal-results'></div>
 					</div>
 				}
+				closeRef={closeRef}
 			/>
 		</>
 	)

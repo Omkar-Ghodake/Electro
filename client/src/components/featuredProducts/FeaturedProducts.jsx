@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import '../../css/FeaturedProducts.css'
 import FeatProdItem from './FeatProdItem.jsx'
 import Img1 from '../../assets/images/feat-products/feat-prod-img1.jpg'
 import { getAllProducts } from '../../actions/productActions'

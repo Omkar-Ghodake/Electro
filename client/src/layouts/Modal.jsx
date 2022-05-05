@@ -3,7 +3,7 @@ import { RiCloseLine } from 'react-icons/ri'
 
 const Modal = (props) => {
 
-	const { id, size, body } = props
+	const { id, size, body, closeRef } = props
 
 	return (
 		<>
@@ -11,7 +11,7 @@ const Modal = (props) => {
 				<div className={`modal-dialog modal-${size}`}>
 					<div className="modal-content">
 						<div className="modal-header p-2">
-							<button type="button" className="ms-auto rounded-circle modal-close-btn trans-2 p-0 m-0 d-flex justify-content-center align-items-center active-primary" data-bs-dismiss="modal" aria-label="Close">
+							<button ref={closeRef} type="button" className="ms-auto rounded-circle modal-close-btn trans-2 p-0 m-0 d-flex justify-content-center align-items-center active-primary" data-bs-dismiss="modal" aria-label="Close">
 								<RiCloseLine />
 							</button>
 						</div>

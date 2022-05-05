@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/Footer.css'
+import '../css/layoutsCSS/Footer.css'
 import { Link } from 'react-router-dom'
 import { SiInstagram } from 'react-icons/si'
 import { IoMailOutline } from 'react-icons/io5'
