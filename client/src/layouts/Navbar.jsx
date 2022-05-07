@@ -17,6 +17,14 @@ const Navbar = () => {
 		closeRef.current.click()
 	}
 
+	const handleEnterKeyForSearch = (e) => {
+		if (e.key === 'Enter') {
+			e.preventDefault()
+			closeRef.current.click()
+			e.target.value = null
+		}
+	}
+
 	return (
 		<>
 			<nav className="navbar sticky-top navbar-expand-md p-0 navbar-light">
@@ -110,7 +118,7 @@ const Navbar = () => {
 					<div>
 						<h5 className="modal-title text-center" id="navSearchModalLabel">Search for Products</h5>
 						<div className="input-group rounded-pill px-2 py-1">
-							<input className="navbar-search-input" type="text" placeholder="Search..." aria-describedby="modal-search-btn" />
+							<input className="navbar-search-input" type="text" placeholder="Search..." aria-describedby="modal-search-btn" onKeyPress={handleEnterKeyForSearch} />
 							<button className="modal-search-btn rounded-circle trans-2 active-primary" id='modal-search-btn' onClick={handleModalSearchClick}><RiSearch2Line /></button>
 						</div>
 

@@ -10,6 +10,7 @@ import TopBar from '../layouts/TopBar';
 import Home from '../pages/Home';
 import Footer from '../layouts/Footer';
 import ProductDetails from '../pages/ProductDetails';
+import ScrollToTop from '../layouts/ScrollToTop';
 
 function App() {
   return (
@@ -19,10 +20,12 @@ function App() {
           <TopBar />
           <Navbar />
 
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/product/:productId' element={<ProductDetails />} />
-          </Routes>
+          <ScrollToTop>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/product/:productId' element={<ProductDetails />} />
+            </Routes>
+          </ScrollToTop>
         </div>
 
         <Footer />

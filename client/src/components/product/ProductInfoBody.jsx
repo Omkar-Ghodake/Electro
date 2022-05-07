@@ -5,7 +5,12 @@ const ProductInfoBody = () => {
 		<>
 			<div className="body row">
 				<div className="product-desc col-12 p-2 mb-3 rounded-3 bg-white">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur ducimus eveniet voluptas suscipit odio saepe deserunt labore fuga dolore?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur inventore excepturi a dolor magni delectus soluta ullam voluptate unde obcaecati.
+					<h4>MRP: <span className='line-through'>₹3,123</span></h4>
+					<div className="d-flex align-items-end mb-2">
+						<h4 className='m-0 me-2'>Deal: <span className=''>₹2,999</span></h4>
+						<p className='m-0'>(Ends in 3 days)</p>
+					</div>
+					<p>You Save ₹123 (4%)</p>
 				</div>
 			</div>
 		</>
