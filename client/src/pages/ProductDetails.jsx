@@ -61,7 +61,7 @@ const ProductDetails = () => {
 								numOfReviews={numOfReviews}
 								desc={desc}
 							/>
-							<ProductInfoBody price={price} percentDec={5} />
+							<ProductInfoBody price={price} percentDec={5} days={3} hrs={8} mins={36} />
 						</div>
 					</div>
 				</div>}

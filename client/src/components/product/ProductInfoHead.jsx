@@ -6,6 +6,7 @@ const ProductInfoHead = (props) => {
 	const { title, ratings, numOfReviews, desc } = props
 
 	const reactStarsOptions = {
+		name: 'productRating',
 		editing: false,
 		// size: window.innerWidth < 600 ? 20 : 23,
 		value: ratings

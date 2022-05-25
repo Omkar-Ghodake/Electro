@@ -4,7 +4,11 @@ import { FaRegMoneyBillAlt } from 'react-icons/fa'
 
 const ProductInfoBody = (props) => {
 
-	const { price, percentDec } = props
+	const { price, percentDec, days, hrs, mins } = props
+
+	const today = new Date()
+
+	var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 	return (
 		<>
@@ -13,7 +17,7 @@ const ProductInfoBody = (props) => {
 					<h4>MRP: <span className='line-through'>₹{price + ((percentDec / 100) * price)}</span></h4>
 					<div className="d-flex align-items-end mb-2">
 						<h4 className='m-0 me-2'>Deal: <span className=''>₹{price}</span></h4>
-						<p className='m-0'>(Ends in 3 days)</p>
+						<p className='m-0'>(Ends in {today.toLocaleDateString('en-US', options)})</p>
 					</div>
 					<p>You Save ₹{(percentDec / 100) * price} ({percentDec}%)</p>
 				</div>
