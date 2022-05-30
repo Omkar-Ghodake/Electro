@@ -4,7 +4,7 @@ import { FaRegMoneyBillAlt } from 'react-icons/fa'
 
 const ProductInfoBody = (props) => {
 
-	const { price, percentDec, days, hrs, mins } = props
+	const { price, percentDec, desc } = props
 
 	const today = new Date()
 
@@ -42,6 +42,10 @@ const ProductInfoBody = (props) => {
 						<span>Buy Now</span>
 					</button>
 				</div>
+			</div>
+
+			<div className="product-desc row p-2 mb-3 rounded-3 bg-white">
+				{desc}
 			</div>
 
 			<div className="product-reviews row">
