@@ -1,10 +1,11 @@
 import React from 'react'
 import { RiShoppingCart2Line, RiFileList3Line } from 'react-icons/ri'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
+import ProductReviews from './ProductReviews'
 
 const ProductInfoBody = (props) => {
 
-	const { price, percentDec, desc } = props
+	const { price, percentDec, desc, reviews } = props
 
 	const today = new Date()
 
@@ -48,8 +49,12 @@ const ProductInfoBody = (props) => {
 				{desc}
 			</div>
 
-			<div className="product-reviews row">
-
+			<div className="product-reviews row p-2 mb-3 rounded-3 bg-white">
+				{
+					reviews && reviews.map((review, index) => {
+						return <ProductReviews key={index} userName={review.name} rating={review.rating} comment={review.comment} />
+					})
+				}
 			</div>
 		</>
 	)

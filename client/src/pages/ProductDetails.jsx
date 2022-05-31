@@ -16,7 +16,7 @@ const ProductDetails = () => {
 	const alert = useAlert()
 	const { product, loading, error } = useSelector((state) => state.product)
 	if (product) {
-		var { title, ratings, numOfReviews, desc, price } = product
+		var { title, ratings, numOfReviews, desc, price, reviews } = product
 	}
 
 	useEffect(() => {
@@ -61,7 +61,7 @@ const ProductDetails = () => {
 								numOfReviews={numOfReviews}
 							/>
 
-							<ProductInfoBody price={price} percentDec={5} days={3} hrs={8} mins={36} desc={desc} />
+							<ProductInfoBody price={price} percentDec={5} days={3} hrs={8} mins={36} desc={desc} reviews={reviews} />
 						</div>
 					</div>
 				</div>}

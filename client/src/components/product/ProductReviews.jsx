@@ -1,8 +1,30 @@
 import React from 'react'
+import ReactStars from 'react-star-rating-component'
 
-const ProductReviews = () => {
+const ProductReviews = (props) => {
+
+	const { userName, rating, comment } = props
+
 	return (
-		<div>ProductReviews</div>
+		<>
+			<div className="card mb-2">
+				<div className="card-body">
+					<h6 className="card-title d-flex align-items-center">
+						<strong className='me-2'>{userName}</strong>
+						<ReactStars
+							name={'productRating'}
+							editing={false}
+							value={rating}
+							classNames='me-2'
+						/>
+					</h6>
+
+					<div className="card-text">
+						{comment}
+					</div>
+				</div>
+			</div>
+		</>
 	)
 }
 
