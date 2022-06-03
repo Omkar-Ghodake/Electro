@@ -42,4 +42,58 @@ body {
 	text-decoration-color: maroon;
 }
 
+button {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
 /* common classes end */
+
+/* pagination */
+.pagination-container {
+	margin-top: 1.5rem;
+}
+
+.pagination {
+	display: flex;
+}
+
+.pagination .disabled {
+	color: rgb(149, 148, 148) !important;
+	cursor: not-allowed;
+}
+
+.pageItemActive, .pageLinkActive {
+	background-color: #0275d8;
+	color: #fff;
+}
+
+.pageItemActive:hover, .pageLinkActive:hover {
+	background-color: #fff;
+	border-color: #0275d8;
+	color: #0275d8;
+}
+
+.page-item {
+	margin-right: 1rem;
+	box-shadow: none;
+	outline: none;
+	border-radius: 0.3rem;
+}
+
+.page-link {
+	border-radius: 0.3rem;
+}
+
+.page-link:hover {
+	border-color: #0275d8;
+}
+
+.btn:focus, .page-link:focus {
+	outline: none;
+	box-shadow: none;
+	background-color: inherit;
+	color: inherit;
+}
+
+/* pagination end */

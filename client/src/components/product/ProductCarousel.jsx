@@ -25,10 +25,10 @@ const ProductCarousel = () => {
 							<img src={Img4} className="d-block home-carousel-img rounded-3 mx-auto" alt="..." />
 						</div>
 					</div>
-					<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+					<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval">
 						<BsChevronLeft className='fs-1' />
 					</button>
-					<button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+					<button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval">
 						<BsChevronRight className='fs-1' />
 					</button>
 				</div>

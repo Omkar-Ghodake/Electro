@@ -1,0 +1,17 @@
+.Spinner {
+	position: relative;
+	width: 90vw;
+	height: 60vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.iphoneSpinner {
+	/* height: 90vh; */
+	position: sticky;
+	top: 50%;
+	margin: auto;
+	display: flex;
+	z-index: 1000;
+}

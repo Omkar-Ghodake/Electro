@@ -3,7 +3,7 @@ import ReactStars from 'react-star-rating-component'
 
 const ProductInfoHead = (props) => {
 
-	const { title, ratings, numOfReviews, desc } = props
+	const { title, ratings, numOfReviews } = props
 
 	const reactStarsOptions = {
 		name: 'productRating',

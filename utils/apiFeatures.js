@@ -24,12 +24,12 @@ class ApiFeatures {
 
 		// removing some fields for category
 		const removeFields = ["keyword", "page", "limit", "latest", "sort"]
-		removeFields.forEach(key => {
+		removeFields.forEach((key) =>
 			delete queryCopy[key]
-		})
+		)
 
 		let queryStr = JSON.stringify(queryCopy)
-		queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, key => `$${key}`)
+		queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`)
 
 		this.query = this.query.find(JSON.parse(queryStr))
 		return this

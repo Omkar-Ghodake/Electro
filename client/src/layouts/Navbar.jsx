@@ -1,29 +1,41 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import '../css/layoutsCSS/Navbar.css'
 import { Link, useLocation } from 'react-router-dom'
 import { RiShoppingCart2Line, RiSearch2Line } from 'react-icons/ri'
 import { RiMenu4Fill } from 'react-icons/ri'
 import Modal from './Modal'
+import { useNavigate } from 'react-router-dom'
 
 // styled components
 
+const Navbar = (props) => {
 
-const Navbar = () => {
+	const [keyword, setKeyword] = useState('')
 
 	const pathname = useLocation().pathname
 	const closeRef = useRef(null)
+	const inputElement = useRef(null)
+	const navigate = useNavigate()
 
-	const handleModalSearchClick = () => {
+	const handleModalSearchClick = (e) => {
+		e.preventDefault()
 		closeRef.current.click()
-	}
 
-	const handleEnterKeyForSearch = (e) => {
-		if (e.key === 'Enter') {
-			e.preventDefault()
-			closeRef.current.click()
-			e.target.value = null
+		if (keyword.trim()) {
+			// history.push(`/products/${keyword}`)
+			navigate(`/allProducts/${keyword}`)
+		} else {
+			navigate(`/allProducts`)
+			// history.push(`/products`)
 		}
 	}
+
+	useEffect(() => {
+		if (inputElement.current) {
+			inputElement.current.focus();
+		}
+	}, [])
+
 
 	return (
 		<>
@@ -116,13 +128,15 @@ const Navbar = () => {
 				size={'lg'}
 				body={
 					<div>
-						<h5 className="modal-title text-center" id="navSearchModalLabel">Search for Products</h5>
-						<div className="input-group rounded-pill px-2 py-1">
-							<input className="navbar-search-input" type="text" placeholder="Search..." aria-describedby="modal-search-btn" onKeyPress={handleEnterKeyForSearch} />
-							<button className="modal-search-btn rounded-circle trans-2 active-primary" id='modal-search-btn' onClick={handleModalSearchClick}><RiSearch2Line /></button>
-						</div>
+						<h5 className="modal-title text-center mb-4" id="navSearchModalLabel">Search for Products</h5>
+						<form onSubmit={handleModalSearchClick} className='mb-4' >
+							<div className="input-group rounded-pill px-2 py-1">
+								<input className="navbar-search-input" ref={inputElement} type="text" placeholder="Search..." aria-describedby="modal-search-btn" onChange={(e) => { setKeyword(e.target.value) }} autoFocus />
+								<button type='submit' className="modal-search-btn rounded-circle trans-2 active-primary" id='modal-search-btn'><RiSearch2Line /></button>
+							</div>
+						</form>
 
-						<div className='search-modal-results'></div>
+						{/* <div className='search-modal-results'></div> */}
 					</div>
 				}
 				closeRef={closeRef}

@@ -25,22 +25,22 @@ const ProductInfoBody = (props) => {
 			</div>
 
 			<div className="product-options row p-2 mb-3 rounded-3 bg-white">
-				<div className="col-lg-4 col-sm-6">
-					<button className="product-options-btn btn-outline-secondary border border-secondary d-flex justify-content-between align-items-center rounded-pill px-3 py-1 trans-2">
+				<div className="col-lg-4 col-6 mb-2">
+					<button className="product-options-btn btn-outline-dark border border-dark d-flex justify-content-between align-items-center rounded-pill px-3 py-1 trans-2">
 						<RiShoppingCart2Line className='me-2' />
 						<span>Add To Cart</span>
 					</button>
 				</div>
-				<div className="col-lg-4 col-sm-6">
-					<button className="product-options-btn btn-outline-danger border border-danger d-flex justify-content-between align-items-center rounded-pill px-3 py-1 trans-2">
-						<RiFileList3Line className='me-2' />
-						<span>Add To Wishlist</span>
-					</button>
-				</div>
-				<div className="col-lg-4 col-sm-6">
+				<div className="col-lg-4 col-6 mb-2">
 					<button className="product-options-btn btn-outline-primary border border-primary d-flex justify-content-between align-items-center rounded-pill px-3 py-1 trans-2">
 						<FaRegMoneyBillAlt className='me-2' />
 						<span>Buy Now</span>
+					</button>
+				</div>
+				<div className="col-lg-4 col-8 mb-2">
+					<button className="product-options-btn btn-outline-danger border border-danger d-flex justify-content-between align-items-center rounded-pill px-3 py-1 trans-2">
+						<RiFileList3Line className='me-2' />
+						<span>Add To Wishlist</span>
 					</button>
 				</div>
 			</div>
@@ -50,6 +50,7 @@ const ProductInfoBody = (props) => {
 			</div>
 
 			<div className="product-reviews row p-2 mb-3 rounded-3 bg-white">
+				<h3>Reviews</h3>
 				{
 					reviews && reviews.map((review, index) => {
 						return <ProductReviews key={index} userName={review.name} rating={review.rating} comment={review.comment} />

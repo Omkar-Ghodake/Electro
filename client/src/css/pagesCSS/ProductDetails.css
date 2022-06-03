@@ -66,6 +66,10 @@
 	.ProductDetails-sm-min {
 		display: none;
 	}
+
+	.product-options-btn {
+		font-size: 14px !important;
+	}
 }
 
 /* Above XS devices */

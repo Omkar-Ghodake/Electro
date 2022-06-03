@@ -7,7 +7,7 @@ const ProductReviews = (props) => {
 
 	return (
 		<>
-			<div className="card mb-2">
+			<div className="card mb-2 border-warning">
 				<div className="card-body">
 					<h6 className="card-title d-flex align-items-center">
 						<strong className='me-2'>{userName}</strong>
